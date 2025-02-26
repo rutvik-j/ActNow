@@ -3,7 +3,9 @@ import streamlit.components.v1 as components
 import re
 import requests
 import json
+from streamlit.logger import get_logger
 
+logger = get_logger(__name__)
 
 st.set_page_config(
     page_title="ActNow",
@@ -46,7 +48,7 @@ def get_video_analysis(video_url):
         data = json.loads(response.text)
         content = data['response']
 
-        print(response.text)
+        logger.info(response.text)
 
         # Split the content into sections
         sections = content.split('## ')
