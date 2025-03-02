@@ -58,7 +58,7 @@ def get_video_analysis(video_url):
         summary = ""
         quotes = ""
         
-        if "I'm sorry, but I can't" in content:
+        if "NULL...understanding00" in content:
             st.error("This video does not contain the transcript in English and is unable to be processed. Please try another video :)")
             return None, None, None
         else: 
