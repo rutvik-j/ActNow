@@ -311,7 +311,7 @@ if not st.session_state.video_page:
     # Input Section
     col1, col2, col3 = st.columns([0.15, 0.4, 0.2])  # Adjust column widths as needed
     with col2:
-        st.session_state.youtube_url = st.text_input("Copy & Paste YouTube Video URL", placeholder="https://www.youtube.com/watch?v=", label_visibility="hidden")
+        st.session_state.youtube_url = st.text_input("Copy & Paste YouTube Video URL", placeholder="https://www.youtube.com/watch?v=")
     with col3:
         st.markdown("<br>", unsafe_allow_html=True)  # Add space between the input and button
         process_button = st.button("→", disabled=st.session_state.processing, help="Process video for strategies")
