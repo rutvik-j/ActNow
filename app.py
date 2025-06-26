@@ -4,6 +4,7 @@ import re
 import requests
 import json
 from streamlit.logger import get_logger
+from st_copy_to_clipboard import st_copy_to_clipboard
 
 logger = get_logger(__name__)
 
@@ -88,15 +89,6 @@ def get_video_analysis(video_url):
         st.error(f"An error occurred while processing the video: {e}")
         return None, None, None
 
-def copy_button_component(content, button_id):
-
-
-    return f"""
-    <div style="position: relative;">
-        <h3 style="display: inline-block;">{content}</h3>
-        <button onclick="copyToClipboard('{button_id}')" class="custom-copy">📋</button>
-    </div>
-    """
 
 def display_video_page():
     """Displays the video analysis results, including the video, quotes, summary, and strategies."""
@@ -131,9 +123,8 @@ def display_video_page():
 
         # Strategies Section
         with strategies:
-            # st_copy_to_clipboard(strategies_res)
             st.subheader("Strategies")
-            # st.markdown(copy_button_component('Strategies','strategies-content'), unsafe_allow_html=True)
+            st_copy_to_clipboard(strategies_res, before_copy_label='📋 Copy', after_copy_label='✅')
             st.markdown(f'<div id="strategies-content" class="custom-column-strategies">\n\n{strategies_res}\n\n</div>', unsafe_allow_html=True)
 
 
